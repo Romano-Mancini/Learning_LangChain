@@ -1,11 +1,8 @@
 import os
-from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import CharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-
-load_dotenv()
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 article_dir = os.path.join(curr_dir, "wikipedia_articles", "formula1.txt")
