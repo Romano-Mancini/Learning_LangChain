@@ -13,7 +13,7 @@ db = Chroma(
 
 retreiver = db.as_retriever(
     search_type="similarity_score_threshold",
-    search_kwargs={'k':1, 'score_threshold': 0.2}
+    search_kwargs={'k':1, 'score_threshold': 0.5}
 )
 
 documents_retreived = retreiver.invoke("How much money does entering a new F1 team require?")

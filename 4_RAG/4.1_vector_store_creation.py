@@ -1,6 +1,6 @@
 import os
 from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import CharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
@@ -19,8 +19,9 @@ if not os.path.exists(db_dir):
 
     loader = TextLoader(article_dir)
     document = loader.load()
-
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    for doc in document:
+        doc.metadata={"source":os.path.basename(article_dir)}
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
     splitted_documents = text_splitter.split_documents(document)
 
     print(f"Number of splitted documents: {len(splitted_documents)}.")
