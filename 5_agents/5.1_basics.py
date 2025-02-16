@@ -7,7 +7,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 
 def get_current_date(*args, **kwargs):
-    """Gets the current time."""
+    """Gets the current date."""
 
     import datetime
 
